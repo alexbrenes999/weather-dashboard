@@ -1,0 +1,8 @@
+.histbar {
+    border: 2px;
+    border-color: gray;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: #fff;
+    border-radius: 10px;
+}

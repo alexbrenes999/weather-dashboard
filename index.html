@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Weather Dash</title>
+</head>
+
+<body>
+
+    <!--Nav Container-->
+    <div class="p-15 bg-red-500">
+        <nav class="flex justify-center mt-5">
+            <h1 class="text-5xl p-5">Weather</h1>
+            <img class="h-32 w-32" src="./assets/images/weatherlogo.gif">
+            <h1 class="text-5xl p-5">Dashboard</h1>
+        </nav>
+        <h1 class="flex justify-center" id="current-time"></h1>
+    </div>
+
+    <!--Divider-->
+    <div class="grid grid-cols-12 pt-10">
+        <!--Left Side-->
+        <div class="col-start-4 col-span-2 rounded bg-blue-400">
+            <aside class="border-4  border-black">
+                <!--Top Text-->
+                <div class="">
+                    <h2 class="flex justify-center p-3 text-3xl">City Search:</h2>
+                <!--Search Bar-->
+                <form class="flex justify-center p-3 gap-2">
+                    <input
+                    class="w-70 h-10 text-sm text-center rounded shadow-xl"
+                    id="userInput"
+                    type="text"
+                    placeholder="Search for your City!"/>
+                    <button
+                    class="bg-white p-2 h-10 rounded shadow"
+                    id="searchButton"
+                    type="btn">
+                    Search
+                    </button>
+                </form>
+                <!--Search History Container-->
+                <ul id="history-container">
+                </ul>
+                </div>
+            </aside>
+        </div>
+
+        <!--Right Side-->
+        <div class="col-start-7 col-span-5">
+            <!--Top-->
+            <div class="text-center bg-green-400 mb-4">
+                <h2 class="p-2 text-start text-2xl font-bold">Today's Weather</h2>
+                <h2 class="text-center text-3xl" id="current-city"></h2>
+                <img class="h-40 w-40 mx-auto my-5" id="today-weather-icon" src="">
+                <p class="text-xl p-2" id="today-temp">Temperature: </p>
+                <p class="text-xl p-2" id="today-humid">Humidity: </p>
+                <p class="text-xl p-2" id="today-wnd-spd">Wind Speed: </p>
+            </div>
+            <!--Bottom-->
+            <div class="bg-amber-500 mt-4">
+                <!--Title-->
+                <h2 class="text-2xl font-bold p-2">5-Day Forecast:</h2>
+                <ul class="grid grid-cols-5">
+                    <!--Day 1#-->
+                    <li class="bg-indigo-500 ">
+                        <h2 id="day" class="pt-2 pl-2 font-semibold text-lg"></h2>
+                        <h2 id="date" class="pb-2 pl-2 text-sm"></h2>
+                        <img class="h-20 w-20 mx-auto" id="" src="">
+                        <p id="" class="text-center p-2">Temp: </p>
+                        <p id="" class="text-center p-2">Wind Speed: </p>
+                        <p id="" class="text-center p-2">Humidity: </p>
+                    </li>
+
+                    <!--Day 2#-->
+                    <li class="bg-indigo-500 ">
+                        <h2 id="day" class="pt-2 pl-2 font-semibold text-lg"></h2>
+                        <h2 id="date" class="pb-2 pl-2 text-sm"></h2>
+                        <img class="h-20 w-20 mx-auto" id="" src="">
+                        <p id="" class="text-center p-2">Temp: </p>
+                        <p id="" class="text-center p-2">Wind Speed: </p>
+                        <p id="" class="text-center p-2">Humidity: </p>
+                    </li>
+
+                    <!--Day 3#-->
+                    <li class="bg-indigo-500 ">
+                        <h2 id="day" class="pt-2 pl-2 font-semibold text-lg"></h2>
+                        <h2 id="date" class="pb-2 pl-2 text-sm"></h2>
+                        <img class="h-20 w-20 mx-auto" id="" src="">
+                        <p id="" class="text-center p-2">Temp: </p>
+                        <p id="" class="text-center p-2">Wind Speed: </p>
+                        <p id="" class="text-center p-2">Humidity: </p>
+                    </li>
+
+                    <!--Day 4#-->
+                    <li class="bg-indigo-500 ">
+                        <h2 id="day" class="pt-2 pl-2 font-semibold text-lg"></h2>
+                        <h2 id="date" class="pb-2 pl-2 text-sm"></h2>
+                        <img class="h-20 w-20 mx-auto" id="" src="">
+                        <p id="" class="text-center p-2">Temp: </p>
+                        <p id="" class="text-center p-2">Wind Speed: </p>
+                        <p id="" class="text-center p-2">Humidity: </p>
+                    </li>
+
+                    <!--Day 5#-->
+                    <li class="bg-indigo-500 ">
+                        <h2 id="day" class="pt-2 pl-2 font-semibold text-lg"></h2>
+                        <h2 id="date" class="pb-2 pl-2 text-sm"></h2>
+                        <img class="h-20 w-20 mx-auto" id="" src="">
+                        <p id="" class="text-center p-2">Temp: </p>
+                        <p id="" class="text-center p-2">Wind Speed: </p>
+                        <p id="" class="text-center p-2">Humidity: </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+<script src="./assets/js/script.js"></script>
+</body>
+</html>
