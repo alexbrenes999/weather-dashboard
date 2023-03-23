@@ -1,130 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/style/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Weather Dash</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
-<body>
-
-    <!--Nav Container-->
-    <div class="p-15 bg-red-500">
-        <nav class="flex justify-center mt-5">
-            <h1 class="text-5xl p-5">Weather</h1>
-            <img class="h-32 w-32" src="./assets/images/weatherlogo.gif">
-            <h1 class="text-5xl p-5">Dashboard</h1>
-        </nav>
-        <h1 class="flex justify-center" id="current-time"></h1>
+<body class="bg-dark">
+    <div class="jumbotron container-fluid mt-2 text-center p-2 bg-success" id="header">
+        <h1><strong>Weather Dashboard</strong></h1>
+        <h2 id="current-time">Today's Date</h2>
     </div>
-
-    <!--Divider-->
-    <div class="grid grid-cols-12 pt-10">
-        <!--Left Side-->
-        <div class="col-start-4 col-span-2 rounded bg-blue-400">
-            <aside class="border-4  border-black">
-                <!--Top Text-->
-                <div class="">
-                    <h2 class="flex justify-center p-3 text-3xl">City Search:</h2>
-                <!--Search Bar-->
-                <form class="flex justify-center p-3 gap-2">
-                    <input
-                    class="w-70 h-10 text-sm text-center rounded shadow-xl"
-                    id="userInput"
-                    type="text"
-                    placeholder="Search for your City!"/>
-                    <button
-                    class="bg-white p-2 h-10 rounded shadow"
-                    id="searchButton"
-                    type="btn">
-                    Search
-                    </button>
-                </form>
-                <!--Search History Container-->
-                <ul id="history-container">
-                </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 bg-dark">
+                <h4 class="pt-1 text-light"><strong>City Search:</strong></h4>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="city-search" aria-label="City Search"
+                        aria-describedby="search-button" />
+                    <div class="input-group-append">
+                        <button class="btn bg-primary text-light" id="btn">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
                 </div>
-            </aside>
-        </div>
-
-        <!--Right Side-->
-        <div class="col-start-7 col-span-5">
-            <!--Top-->
-            <div class="text-center bg-green-400 mb-4">
-                <h2 class="p-2 text-start text-2xl font-bold">Today's Weather</h2>
-                <h2 class="text-center text-3xl" id="current-city"></h2>
-                <img class="h-40 w-40 mx-auto my-5" id="today-weather-icon" src="">
-                <p class="text-xl p-2" id="today-temp">Temperature: </p>
-                <p class="text-xl p-2" id="today-humid">Humidity: </p>
-                <p class="text-xl p-2" id="today-wnd-spd">Wind Speed: </p>
+                <ul class="list-group" id="search-history"></ul>
             </div>
-            <!--Bottom-->
-            <div class="bg-amber-500 mt-4">
-                <!--Title-->
-                <h2 class="text-2xl font-bold p-2">5-Day Forecast:</h2>
-                <ul class="grid grid-cols-5">
-                    <!--Day 1#-->
-                    <li class="bg-indigo-500 ">
-                        <h2 id="day" class="pt-2 pl-2 font-semibold text-lg"></h2>
-                        <h2 id="date" class="pb-2 pl-2 text-sm"></h2>
-                        <img class="h-20 w-20 mx-auto" id="" src="">
-                        <p id="" class="text-center p-2">Temp: </p>
-                        <p id="" class="text-center p-2">Wind Speed: </p>
-                        <p id="" class="text-center p-2">Humidity: </p>
-                    </li>
+            <div class="col-sm-8">
+                <div class="row ml-2 border border-dark rounded">
+                    <div class="text-light col-sm-12" id="current-weather">
+                        <h3 class="city-name text-light mb-1 mt-2 bolder" id="city-name"></h3>
+                        <div id="weather-icon"></div>
+                        <p>
+                            Temperature:&nbsp<span class="text-light" id="current-temp"></span>
+                        </p>
+                        <p>
+                            Humidity:&nbsp<span class="text-light" id="current-humid"></span>
+                        </p>
+                        <p>
+                            Wind Speed:&nbsp<span class="text-light" id="wind-speed"></span>
+                        </p>
+                    </div>
+                </div>
 
-                    <!--Day 2#-->
-                    <li class="bg-indigo-500 ">
-                        <h2 id="day" class="pt-2 pl-2 font-semibold text-lg"></h2>
-                        <h2 id="date" class="pb-2 pl-2 text-sm"></h2>
-                        <img class="h-20 w-20 mx-auto" id="" src="">
-                        <p id="" class="text-center p-2">Temp: </p>
-                        <p id="" class="text-center p-2">Wind Speed: </p>
-                        <p id="" class="text-center p-2">Humidity: </p>
-                    </li>
-
-                    <!--Day 3#-->
-                    <li class="bg-indigo-500 ">
-                        <h2 id="day" class="pt-2 pl-2 font-semibold text-lg"></h2>
-                        <h2 id="date" class="pb-2 pl-2 text-sm"></h2>
-                        <img class="h-20 w-20 mx-auto" id="" src="">
-                        <p id="" class="text-center p-2">Temp: </p>
-                        <p id="" class="text-center p-2">Wind Speed: </p>
-                        <p id="" class="text-center p-2">Humidity: </p>
-                    </li>
-
-                    <!--Day 4#-->
-                    <li class="bg-indigo-500 ">
-                        <h2 id="day" class="pt-2 pl-2 font-semibold text-lg"></h2>
-                        <h2 id="date" class="pb-2 pl-2 text-sm"></h2>
-                        <img class="h-20 w-20 mx-auto" id="" src="">
-                        <p id="" class="text-center p-2">Temp: </p>
-                        <p id="" class="text-center p-2">Wind Speed: </p>
-                        <p id="" class="text-center p-2">Humidity: </p>
-                    </li>
-
-                    <!--Day 5#-->
-                    <li class="bg-indigo-500 ">
-                        <h2 id="day" class="pt-2 pl-2 font-semibold text-lg"></h2>
-                        <h2 id="date" class="pb-2 pl-2 text-sm"></h2>
-                        <img class="h-20 w-20 mx-auto" id="" src="">
-                        <p id="" class="text-center p-2">Temp: </p>
-                        <p id="" class="text-center p-2">Wind Speed: </p>
-                        <p id="" class="text-center p-2">Humidity: </p>
-                    </li>
-                </ul>
+                <!-- 5 Day Weather Section -->
+                <div class="col-sm-12" id="future-weather">
+                    <h3 class="text-light">5-Day Forecast:</h3>
+                    <div class="row text-light" id="forecast-cards">
+                        <div class="col-sm-2 bg-success forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
+                            <p id="date0"></p>
+                            <p id="img0"></p>
+                            <p>Temp:&nbsp<span id="temp0"></span></p>
+                            <p>Wind:&nbsp<span id="wind0"></span></p>
+                            <p>Humidity:&nbsp<span id="humidity0"></span></p>
+                        </div>
+                        <div class="col-sm-2 bg-success forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
+                            <p id="date1"></p>
+                            <p id="img1"></p>
+                            <p>Temp:&nbsp<span id="temp1"></span></p>
+                            <p>Wind:&nbsp<span id="wind1"></span></p>
+                            <p>Humidity:&nbsp<span id="humidity1"></span></p>
+                        </div>
+                        <div class="col-sm-2 bg-success forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
+                            <p id="date2"></p>
+                            <p id="img2"></p>
+                            <p>Temp:&nbsp<span id="temp2"></span></p>
+                            <p>Wind:&nbsp<span id="wind2"></span></p>
+                            <p>Humidity:&nbsp<span id="humidity2"></span></p>
+                        </div>
+                        <div class="col-sm-2 bg-success forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
+                            <p id="date3"></p>
+                            <p id="img3"></p>
+                            <p>Temp:&nbsp<span id="temp3"></span></p>
+                            <p>Wind:&nbsp<span id="wind3"></span></p>
+                            <p>Humidity:&nbsp<span id="humidity3"></span></p>
+                        </div>
+                        <div class="col-sm-2 bg-success forecast text-white ml-2 mb-3 p-2 mt-2 rounded">
+                            <p id="date4"></p>
+                            <p id="img4"></p>
+                            <p>Temp:&nbsp<span id="temp4"></span></p>
+                            <p>Wind:&nbsp<span id="wind4"></span></p>
+                            <p>Humidity:&nbsp<span id="humidity4"></span></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-<script src="./assets/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
