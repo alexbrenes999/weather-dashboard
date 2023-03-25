@@ -15,7 +15,6 @@ $('#current-time').text(today);
 function getCity(event) {
     event.preventDefault();
     var searchedCity = document.querySelector("#city-search").value;
-    //cancels fetch if search empty
     if (searchedCity == "") {
         return;
     }
